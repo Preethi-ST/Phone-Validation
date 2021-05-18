@@ -235,7 +235,7 @@ Array_validateParam.map(validate => validate.addEventListener('click',function()
                                                         <div class="col-md-10 col-lg-8 mb-3">
                                                             <input type="tel" class="form-control" name="phonenumber" id="phonenumber" title="Must have 10 numbers"
                                                             required placeholder="Enter phone number">
-                                                            <div class="invalid-feedback">Enter 10 digits of a phone number</div>
+                                                            <div class="invalid-feedback">Enter phone number</div>
                                                         </div>
                                                     </div>
                                                     <div>
@@ -302,7 +302,6 @@ function postPhoneTable(data){
         para.style.fontSize = "25px";
         let node = document.createTextNode('Hooray!! The number is not valid.');
         para.appendChild(node);
-       // document.getElementById('mypara').remove();
     }
     para.setAttribute('id',"mypara");
     document.getElementById('fields').appendChild(para);
@@ -321,6 +320,9 @@ document.addEventListener('click',function(e){
         else if(document.getElementById('code').value === ""){
             document.getElementById('code').classList.add('is-invalid');
         }
+        else if(!number.match(/^[0-9]+$/)){
+            alert("Enter only numbers");
+        }
         else{
             document.getElementById('phonenumber').classList.remove('is-invalid');
             document.getElementById('code').classList.remove('is-invalid');
@@ -334,7 +336,7 @@ document.addEventListener('click',function(e){
                     document.getElementById("myform").reset();
                 }
                 catch (err){
-                    console.log(err);
+                   console.log(err);
                 }
             }
             myfun();
